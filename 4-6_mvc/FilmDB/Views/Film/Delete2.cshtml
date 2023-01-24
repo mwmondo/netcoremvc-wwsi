@@ -1,0 +1,15 @@
+﻿@model FilmDB.Models.FilmModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Czy jesteś pewny, że chcesz usunąć film?</h1>
+<code>
+    @{
+        string json = System.Text.Json.JsonSerializer.Serialize(Model).ToString();
+    }
+</code>
+
+<button class="btn btn-danger">Tak</button>
+<button class="btn btn-primary">Nie</button>

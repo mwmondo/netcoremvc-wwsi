@@ -1,0 +1,54 @@
+﻿@model IEnumerable<TodoCRUD.Models.TodoModel>
+
+@{
+    ViewData["Title"] = "Subtasks";
+}
+
+<h1>Podzadania</h1>
+
+<p>
+    <a href="@Url.Action("Add", new { TodoIdParent=ViewBag.TodoIdParent })" class="btn btn-success">Dodaj nowe zadanie</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TodoTitle)
+            </th>
+            @*            <th>
+            @Html.DisplayNameFor(model => model.TodoDescription)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.TodoStatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TodoTitle)
+                </td>
+                @*              <td>
+            @Html.DisplayFor(modelItem => item.TodoDescription)
+            </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.TodoStatus)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", new {  id=item.TodoId })" class="btn btn-primary">
+                        Edytuj
+                    </a>
+                    <a href="@Url.Action("Details", new { id=item.TodoId })" class="btn btn-primary">
+                        Szczegóły
+                    </a>
+                    <a href="@Url.Action("Delete", new { id=item.TodoId })" class="btn btn-danger">
+                        Usuń
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
